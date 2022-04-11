@@ -33,6 +33,10 @@ function Users() {
     return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
   };
 
+  const topPage = () => {
+    return window.scrollTo(0, 0);
+  }
+
   useEffect(() => {
     if (getToken) {
       api.defaults.headers.common["Authorization"] = getToken;
@@ -68,6 +72,7 @@ function Users() {
         "dataNascimento",
         moment(data.dataNascimento, "YYYY-MM-DD").format("DD/MM/YYYY")
       );
+      topPage()
       formik.setFieldValue("cpf", data.cpf);
     } catch (error) {
       console.log("Erro ao tentar acessar api endereço por id", error);

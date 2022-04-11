@@ -35,6 +35,10 @@ function Address() {
   const [isUpdate, setIsUpdate] = useState(false);
 
   const getToken = localStorage.getItem("token");
+  
+  const topPage = () => {
+    return window.scrollTo(0, 0);
+  }
 
   useEffect(() => {
     if (getToken) {
@@ -71,6 +75,7 @@ function Address() {
       formik.setFieldValue("cep", data.cep);
       formik.setFieldValue("pais", data.pais);
       formik.setFieldValue("tipo", data.tipo);
+      topPage()
     } catch (error) {
       console.log("Erro ao tentar acessar api endereço por id", error);
     }
