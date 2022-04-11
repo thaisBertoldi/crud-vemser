@@ -118,7 +118,7 @@ function Users() {
         .required("Você precisa preencher esse campo"),
       dataNascimento: Yup.string().required(
         "Você precisa preencher esse campo"
-      ),
+      ).test('dataNascimento', "Data inválida", (value) => {return moment(value, 'DDMMYYYY').isValid()}),
       cpf: Yup.string().required("Você precisa preencher esse campo"),
     }),
     onSubmit: async (values: NewUserDTO, { resetForm }) => {
